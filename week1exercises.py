@@ -48,3 +48,19 @@ if (angl1 > 0) and (angl2 > 0) and (angl3 > 0) and (angl1 + angl2 + angl3 == 180
     print("The triangle is a", resangl, "triangle")
 else:
     print("The input is not valid")
+
+
+# BONUS
+# Write a program that asks the user for the numbers a, b and c.
+# The program should then print out how many solutions the quadratic equation has.
+
+a = int(input("a pls"))
+b = int(input("b pls"))
+c = int(input("c pls"))
+
+if (b**2 - 4*a*c) > 0:
+    print("The quadratic equation has 2 real solutions")
+elif (b**2 - 4*a*c) == 0:
+    print("The quadratic equation has 1 real solutions")
+else:
+    print("The quadratic equation has 2 complex solutions")

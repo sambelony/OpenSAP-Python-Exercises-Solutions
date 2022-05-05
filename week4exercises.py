@@ -44,9 +44,28 @@ for item in list_tuples:
     print(f"{item[0]:15s}{int(item[1]):3d}{float(item[2]):7.2f}{(float(item[1])*float(item[2])):8.2f}")
 
 
+# There is a file secret.txt, which contains one character per line.
+# There is a second file key.txt, which contains two lines with one number per line (the number could have several digits).
+# The first number col represents the number of columns of a grid, the second number row represents the number of rows of the grid.
+# The characters of the first file should now be filled into this grid.
+# Take the characters one by one and fill them into a string until the string contains col characters.
+# Append the string to a list. Then create a new string the same way.
+# Continue, until the number of strings is equal to row. Now, write all the strings into a file public.txt.
+# Open the the file and check the content.
 
-
-
+with open("secret2.txt", "r") as file1:
+    secret_list = [line.strip() for line in file1]
+with open("key.txt", "r") as file2:
+    key_list = [line.strip() for line in file2]
+col = int(key_list[0])
+row = int(key_list[1])
+posit = 0
+with open("public.txt", "w") as file3:
+    for posy in range(row):
+        for posx in range(col):
+            file3.write(secret_list[posit])
+            posit += 1
+        file3.write("\n")
 
 
 # You probably know the game “Rock, Paper, Scissors”. A game for two players.
@@ -87,7 +106,5 @@ for rounds in range(len(player1_list)):
             player1_wins += 1
         else:
             player2_wins += 1
-print(player1_list)
-print(player2_list)
 with open("result.txt", "w") as file3:
     file3.write(f"Player1 wins: {player1_wins}\nPlayer2 wins: {player2_wins}\nDraws: {draws}\n")

@@ -59,3 +59,33 @@ def stopping_distance(speed):
     return reaction_path(speed) + brake_distance(speed)
 
 print(stopping_distance(50))
+
+
+
+
+
+
+# Prime numbers are natural numbers greater than 1 which are not divisible by any number beside 1 and the number itself.
+# In other words, the number cannot be composed as a product of two natural numbers other than 1 and the number itself.
+# There are infinite prime numbers and the first ones are:
+# 2, 3, 5, 7, 11, …
+# Write a program, that gets an integer through input and creates a list containing all prime numbers until this input.
+# To do so, two functions have to be implemented:
+# The function is_prime() gets an integer as input and returns True if this integer is prime, and False if the integer is not prime.
+# The function prime_list() gets an integer as input and checks each number from 2 to input, if it is prime by calling the above function.
+# If a number is prime, it is appended to a list. This list is given back as the return value of prime_list().
+# The program finally outputs the list of all prime numbers.
+
+def is_prime(num):
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    return True
+
+def prime_list(num):
+    primes_list = [i for i in range(2, num + 1) if is_prime(i)]
+    print(primes_list)
+    return primes_list
+
+num = int(input("Up to which number do you want all prime numbers:"))
+prime_list(num)

@@ -62,6 +62,46 @@ print(stopping_distance(50))
 
 
 
+Vignère Cipher
+You already implemented a solution for the Caesar cipher in week 3.
+As this cipher is quite weak, let's turn to another cipher, the Vignère cipher.
+Like the Caesar cipher, the Vignère cipher is a simple substitution algorithm,
+that means, each letter is replaced by another letter. In the Caesar cipher,
+each letter is shifted the same number of times. And this number is the key.
+In Vignère these number of shifts change from letter to letter.
+The number of shifts are given by a keyword which is repeated until it matches
+the length of the text to be encrypted.
+For simplification we assume, that only letters are encrypted and that we only
+have to deal with lower case letters.
+
+alp = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
+text = (input("Which text should be encrypted: ")).lower()
+key = (input("Which keyword should be used? ")).lower()
+
+def encrypt_letter(char, key):
+    return alp[alp.find(char) + alp.find(key)]
+
+def calculate_shifts(char):
+    return alp.find(char)
+
+def encrypt_text(text, key):
+    key_text = ""
+    encrypted_text = ""
+    lenght_quant = len(text) // len(key)
+    rest_quant = len(text) - len(key)*lenght_quant
+    key_text = key*lenght_quant + key[:rest_quant]
+    for i in range(len(text)):
+        if text[i].isalpha():
+            encrypted_text += encrypt_letter(text[i], key_text[i])
+        else:
+            encrypted_text += text[i]
+    print(encrypted_text)
+    return encrypted_text
+
+encrypt_text(text, key)
+
+
+
 
 
 

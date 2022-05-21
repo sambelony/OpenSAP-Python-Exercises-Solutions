@@ -29,3 +29,31 @@ puzzle.show()
 
 solution = puzzle.solve()
 solution.show()
+
+
+
+
+
+
+# Using the library random create 10,000 random points inside the square.
+# That means generate 10,000 random pairs of values for x and y.
+# The random value must be between 0 and 1 in order for a point to be inside the square.
+# For each point check if x² + y² is < 1. If this is the case, then the point is within the circle.
+# Count the total number of points and the points which are in the circle. Use these numbers to calculate π.
+# Finally compare your calculated value of π with the value of π found in the math library.
+# Do this by printing the calculated value of π, the value from the math library as well as the difference.
+
+import random
+import math
+
+random_x = [random.random() for n in range(10000)]
+random_y = [random.random() for n in range(10000)]
+count = 0
+for i in range(len(random_x)):
+    if (random_x[i]**2 + random_y[i]**2) < 1:
+        count += 1
+calc_p = 4*count/len(random_x)
+
+print("Calculated value of π:", calc_p)
+print("Value of π from math library:", math.pi)
+print("Difference:", math.pi - calc_p)

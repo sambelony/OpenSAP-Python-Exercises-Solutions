@@ -31,8 +31,27 @@ solution = puzzle.solve()
 solution.show()
 
 
+# In this assignment you are going to build a Python program to access the Apple iTunes Search Service.
+# This service can be used to search information about musicians, albums, songs and so on.
+# Using the following URL, a search for the term ramones and for the entity type album is performed:
+# https://itunes.apple.com/search?term=ramones&entity=album
+# The Requests library can be used to invoke the Apple iTunes Search Service.
+# In order to perform a search, a GET request needs to be performed.
+# This is done using the get() function of the Requests library.
+# After that, the method json() of the Requests library can be used to map the response from JSON to the Python data types dict and list.
+# Write a program that asks the user for a search term.
+# Perform a search using the iTunes search service for the entity type album.
+# The program should then print how many search results where returned.
+# For each result print the artist name, the album name and track count.
 
+import requests
 
+r = requests.get(f"https://itunes.apple.com/search?term={input('Please enter a search term:')}&entity=album").json()
+
+print(f"The search returned {r.get('resultCount')} results.")
+
+for i in range(r.get('resultCount')):
+    print(f"Artist: {r.get('results')[i].get('artistName')} - Album: {r.get('results')[i].get('collectionName')} - Track Count: {r.get('results')[i].get('trackCount')}")
 
 
 # Using the library random create 10,000 random points inside the square.
